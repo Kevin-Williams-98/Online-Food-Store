@@ -1,0 +1,127 @@
+Create table customer
+(
+C_id number primary key,
+C_first varchar(25) not null,
+C_last varchar(25) not null,
+C_street varchar(25) not null,
+C_state varchar(25) not null,
+C_zip char(5) not null,
+C_dob date not null,
+C_email varchar(50) 
+);
+
+Create table department
+(
+Dep_id number primary key,
+Dep_name varchar(25)
+);
+
+Create table warehouse(
+W_id number primary key
+W_TYPE     VARCHAR2(20 ) NOT NULL,
+W_STREET  VARCHAR2(50) NOT NULL,
+W_CITY   VARCHAR2(25 ) NOT NULL,
+W_STATE   CHAR(2 ) NOT NULL,
+W_ZIP      CHAR(5`) NOT NULL
+);
+
+Create table transaction (
+T_id number primary key,
+Price number not null,
+T_date date not null,
+Cardnumber varchar (16) not null
+);
+
+
+Create table staff 
+(
+S_id number primary key,
+S_FIRST varchar(25) not null,
+S_LAST varchar(25) not null,
+S_EMAIL varchar(50) not null,
+S_DOB  date,
+TITLE    varchar(50),
+S_STREET varchar(50),
+S_CITY varchar(50),
+S_STATE char(2),
+S_ZIP   char(5),
+DEP_ID number references department(dep_id)
+);
+
+Create table product
+(
+P_ID number primary key
+P_TYPE varchar (20) not null,
+CALORIES number,
+SODIUM number ,
+W_ID number references warehouse(w_id),
+P_NAME varchar(25),
+EXP_DATE date
+);
+
+Create table requestedOrder
+(
+O_id number primary key,
+C_ID number references customer(c_id),
+STATUS varchar (15),
+O_DATE date,
+S_ID number references staff(s_id),
+P_ID number references product(p_id),
+T_ID number references transaction(t_id)
+);
+
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values(100000,	‘Bob’,	‘Sherman’,‘17 main street’,	‘Brooklyn’,	‘NY’,	‘11212’,  to_date(‘03/01/1990’,’mm/dd/yyyy’),‘BSherman@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values(100001,	‘Robert’,	‘Lemon’,	‘ 407 Astro street’,	‘Queens’,	‘NY’,	‘11412’, to_date(‘06/24/1967’,’mm/dd/yyyy’)	,’RLemon@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values ( 100002,	‘Michelle’,	‘Ross’,	‘ 10 Morning lane’,	‘Queens’,	‘NY’,	‘11354	‘, to_date(‘03/21/1989’,’mm/dd/yyyy’),	‘MRoss@gmail.com’ );
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values(100003,	‘Harriet’,	‘Spector’,	‘ 9 Sunrise avenue’,	‘Queens’,	‘NY’,	‘11354’, to_date(‘12/05/1999’,’mm/dd/yyyy’)	,‘HSpector@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values(100004, ‘Mason’,	‘Star’,	‘ 2000 Cherry street’,	‘New York’,	‘NY’,	‘10026’,	
+to_date(‘11/13/1991’,’mm/dd/yyyy’),	‘MStar@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values(100007,	‘Peter’,	‘Pan’,	‘ 22 catskill road’,	‘Bronx’,	‘NY’,	‘10453’,	
+to_date(‘07/04/1970’,’mm/dd/yyyy’),	‘PPan@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values( 100008,	‘John’,	‘Pemoni’,	 ‘54 navy street’,	‘Brooklyn’,	‘NY’,	‘11212’, to_date(‘08/01/1996’,’mm/dd/yyyy’)	,’JPemoni@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values (100009,’	Devin’,   	‘Pemoni’,	‘54 navy street’, 	‘Brooklyn’,	‘NY’,	‘11212’,     , to_date(‘08/01/1996’,’mm/dd/yyyy’)  	,’DPemoni@gmail.com’);
+
+Insert into customer(C_ID, C_FIRST, C_LAST, C_STREET, C_CITY, C_STATE, C_ZIP, C_DOB, C_EMAIL)
+Values( 100011,’	David’,	‘Johnson’,’ 9 navy street’,	‘Brooklyn’,	‘NY’,	‘11212’,	 to_date(‘02/25/1982’,’mm/dd/yyyy’) ,‘DJohnson@gmail.com’);
+
+Insert into department(DEP_ID, DEP_NAME)
+values(8000000,	‘managerial’);
+Insert into department(DEP_ID, DEP_NAME)
+Values (8000001,	‘delivery’);
+Insert into department(DEP_ID, DEP_NAME)
+Values (8000002,	‘warehouse’);
+
+Insert into warehouse(W_ID, W_TYPE, W_STREET, W_CITY, W_STATE, W_ZIP)
+Values(20,	‘refrigerator’	,’17 38th street’,	‘New York’,	‘NY’,	‘10026’);
+
+Insert into warehouse(W_ID, W_TYPE, W_STREET, W_CITY, W_STATE, W_ZIP)
+Values( 21,	‘Refrigerator’,	‘2010 industrial lane’,	‘Bronx’	,’NY’,	‘10453’);
+
+
+Insert into transaction( T_ID, PRICE, T_DATE, CARDNUMBER)
+Values (900021	,12	,to_date(‘03/29/2020’,’mm/dd/yyyy’),	‘4117733908972093’);
+Insert into transaction( T_ID, PRICE, T_DATE, CARDNUMBER)
+Values(900001,	18, to_date(‘04/14/2020’,’mm/dd/yyyy’),‘4117733988501639’);
+
+Insert into product(P_ID, P_TYPE, CALORIES, SODIUM, W_ID, P_NAME, EXP_DATE)
+Values(500000,	‘grain’,	130,	2,	22,	‘popcorn’, to_date(‘04/20/2020’,’mm/dd/yyyy’)	;
+Insert into staff(S_ID, S_FIRST, S_LAST, S_EMAIL, S_DOB, TITLE, S_STREET, S_CITY, S_STATE, S_ZIP, DEP_ID)
+Values(100,’	James’,	‘King’,	‘K.king.will.k@gmail.com’,	, to_date(‘01/10/1998’,’mm/dd/yyyy’)	,’Manager’,	‘112 Emery street’,	‘Hempstead’,	‘NY’,	‘11550’	8000000);
+Insert into requestedOrder(O_ID, C_ID, STATUS, O_DATE, S_ID, P_ID, T_ID)
+Values(2002	,100000,	‘Delivered’,	to_date(‘04/05/2020’,’mm/dd/yyyy’)	,101,	500015,	900013);
+)
