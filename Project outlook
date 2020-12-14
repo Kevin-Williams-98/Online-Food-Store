@@ -1,0 +1,62 @@
+Name     Null?    Type         
+-------- -------- ------------ 
+C_ID     NOT NULL NUMBER       
+C_FIRST  NOT NULL VARCHAR2(25) 
+C_LAST   NOT NULL VARCHAR2(25) 
+C_STREET NOT NULL VARCHAR2(25) 
+C_CITY   NOT NULL VARCHAR2(25) 
+C_STATE  NOT NULL VARCHAR2(2)  
+C_ZIP    NOT NULL CHAR(5)      
+C_DOB    NOT NULL DATE         
+C_EMAIL           VARCHAR2(50)
+
+Name     Null?    Type         
+-------- -------- ------------ 
+DEP_ID   NOT NULL NUMBER       
+DEP_NAME          VARCHAR2(25) 
+Name     Null?    Type         
+-------- -------- ------------ 
+P_ID     NOT NULL NUMBER       
+P_TYPE   NOT NULL VARCHAR2(20) 
+CALORIES          NUMBER(38)   
+SODIUM            NUMBER(38)   
+W_ID              NUMBER       
+P_NAME            VARCHAR2(25) 
+EXP_DATE          DATE         
+Name   Null?    Type         
+------ -------- ------------ 
+O_ID   NOT NULL NUMBER       
+C_ID            NUMBER       
+STATUS          VARCHAR2(15) 
+O_DATE          DATE         
+S_ID            NUMBER       
+P_ID            NUMBER       
+T_ID            NUMBER       
+Name     Null?    Type         
+-------- -------- ------------ 
+S_ID     NOT NULL NUMBER       
+S_FIRST  NOT NULL VARCHAR2(25) 
+S_LAST   NOT NULL VARCHAR2(25) 
+S_EMAIL  NOT NULL VARCHAR2(50) 
+S_DOB             DATE         
+TITLE             VARCHAR2(50) 
+S_STREET          VARCHAR2(50) 
+S_CITY            VARCHAR2(50) 
+S_STATE           CHAR(2)      
+S_ZIP             CHAR(5)      
+DEP_ID            NUMBER       
+
+Name     Null?    Type         
+-------- -------- ------------ 
+W_ID     NOT NULL NUMBER       
+W_TYPE   NOT NULL VARCHAR2(20) 
+W_STREET NOT NULL VARCHAR2(50) 
+W_CITY   NOT NULL VARCHAR2(25) 
+W_STATE  NOT NULL CHAR(2)      
+W_ZIP    NOT NULL CHAR(5)      
+Name       Null?    Type         
+---------- -------- ------------ 
+T_ID       NOT NULL NUMBER       
+PRICE      NOT NULL NUMBER       
+T_DATE     NOT NULL DATE         
+CARDNUMBER NOT NULL VARCHAR2(16)
